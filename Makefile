@@ -6,12 +6,12 @@ MAIN_FILES=$(wildcard *.cc)
 CFLAGS=-O2
 
 BOOST=$(shell brew --prefix boost)
-BOOST_LIBS=program_options,system
+BOOST_LIBS=program_options,system,thread-mt
 
 LIBDIR=$(BOOST)
 INCLUDE=$(BOOST)
 
-LIBS=$(shell echo boost_$(BOOST_LIBS) | sed "s/,/ -lboost_/")
+LIBS=$(shell echo boost_$(BOOST_LIBS) | sed "s/,/ -lboost_/g")
 
 
 default: dirs

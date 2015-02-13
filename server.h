@@ -1,16 +1,20 @@
 #include <iostream>
 #include <boost/asio.hpp>
-#include <boost/format.hpp>
 
 #include "connection.h"
+#include "thread_pool.h"
 
 namespace ip = boost::asio::ip;
 
 class Server {
     private:
-        ip::tcp::endpoint  binding;
+        iopool             pool;
+        ip::tcp::acceptor  acceptor;
+        conn_ptr           conn;
 
     public:
-        Server(int);
-        void serve();
+        Server(int, int);
+        void start();
+        void stop();
+        void handler(const sys::error_code&);
 };

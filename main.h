@@ -1,5 +1,5 @@
-#include <stdio.h>
 #include <iostream>
+#include <boost/thread.hpp>
 
 #include "options.h"
 #include "server.h"
@@ -13,4 +13,5 @@ typedef struct {
 program_info proginfo;
 
 void init();
+int  wait();
 void print_build_info();
